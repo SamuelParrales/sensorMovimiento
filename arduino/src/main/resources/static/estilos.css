@@ -1,0 +1,104 @@
+*
+*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body
+{
+    /*Sino carga la imagen el fondo se pone de color negro*/
+    background-size: cover;
+    color:#fff;
+    font-size: 12px;
+}
+
+.wrap
+{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    
+}
+
+.widget
+{
+    width: 100%;
+    margin:2em;
+    margin: auto;
+    
+}
+
+
+.widget p
+{
+    display: inline-block;
+    line-height: 1em;
+}
+
+.fecha
+{
+    font-family: Oswald, Arial ;
+    text-align: center;
+    font-size:1.5em;
+    margin-bottom: 0.3125em;
+    background: rgba(0,0,0,0.5);
+    padding: 5px;
+    width: 100%;
+}
+
+.reloj
+{
+    font-family: Oswald, Arial ;
+    width: 100%;
+    text-align: center;
+    font-size:4em;
+    padding: 5px;
+    background: rgba(0,0,0,0.5);
+    
+    
+}
+
+.reloj .caja-segundos
+{
+    display: inline-block;
+}
+
+.reloj .segundos,
+.reloj .ampm
+{
+    font-size:2rem;
+    display: block;
+}
+
+.form-inline
+{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+/* - Tareas - */
+.eventos
+{
+    text-align: center;
+}
+.eventos .movimientos-detectados {
+	list-style: none;
+}
+
+.eventos .movimientos-detectados li {
+	border-bottom: 1px solid #B6B6B6;
+}
+
+.eventos .movimientos-detectados li a {
+	color: #212121;
+	display: block;
+	padding: 20px 0;
+	text-decoration: none;
+}
+
+.eventos .movimientos-detectados li a:hover {
+	color: rgb(109, 109, 253);
+}

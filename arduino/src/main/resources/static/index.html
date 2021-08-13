@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>WebSocket Chat Application </title>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/estilos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
     <script src="/jquery-1.10.2.min.js"></script>
     <script src="/app.js"></script>
 </head>
 <body>
-<div id="main-content" class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="connect">Chat Application:</label>
-                    <button id="connect" type="button">Start New Chat</button>
-                    <button id="disconnect" type="button" disabled="disabled">End Chat
-                    </button>
+    <div class="wrap">
+        <div class ="widget">
+            <div class="fecha">
+                <p id="diaSemana" class="diaSemana"></p>
+                <p id="dia" class="dia"></p>
+                <p>de</p>
+                <p id="mes" class="mes"></p>
+                <p>del</p>
+                <p id="year" class="year"></p>
+            </div>
+
+            <div class="reloj">
+                <p id="horas" class="horas"></p>
+                <p>:</p>
+                <p id="minutos" class="minutos"></p>
+                <p>:</p>
+                <div class="caja-segundos">
+                    <p id="ampm" class="ampm"></p>
+                    <p id="segundos" class="segundos"></p>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table id="chat">
-                <thead>
-                <tr>
-                    <th>Welcome user. Please enter you name</th>
-                </tr>
-                </thead>
-                <tbody id="helloworldmessage">
-                </tbody>
-            </table>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="connect"></label>
+            <button id="connect" type="button">Conectar</button>
+            <button id="disconnect" type="button" disabled="disabled">Desconectar</button>
+           
         </div>
-            <div class="row">
-        
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <textarea id="user" placeholder="Write your message here..." required></textarea>
-                </div>
-                <button id="send" type="submit">Send</button>
-            </form>
-        </div>
+    </form>
+
+
+    <div class="wrap">
+        <div class="eventos">
+            <ul class="movimientos-detectados" id="movimientos-detectados">
+          <!--       <li><a href="#">1. 08/08/2021 - 4:05:10 PM.</a></li>
+                <li><a href="#">2. 08/08/2021 - 4:05:10 PM.</a></li>
+                <li><a href="#">3. 08/08/2021 - 4:05:10 PM.</a></li>
+                <li><a href="#">4. 08/08/2021 - 4:05:10 PM.</a></li>
+                <li><a href="#">5. 08/08/2021 - 4:05:10 PM.</a></li> -->
+            </ul>
         </div>
     </div>
- 
-</div>
+    <script src="/reloj.js"></script>
+  
 </body>
 </html>
