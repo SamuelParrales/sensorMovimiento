@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.json.JSONObject;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -23,18 +23,22 @@ import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 
 
-@Component
+@Component //i
 public class SocketTextHandler extends TextWebSocketHandler {
 	//Atributos de arduinos
 	private final List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
+	private boolean listenArduino = false;
 	
 	//
     public void afterConnectionEstablished(WebSocketSession session) throws Exception 
     {
-    	//Codigo de prueba
         sessions.add(session);
         super.afterConnectionEstablished(session);
-        //fin de codigo de prueba
+        
+        if(listenArduino==true)
+        	return;
+        
+        
     	PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
     	SerialPortEventListener listener = new SerialPortEventListener() 
     	{
@@ -50,6 +54,7 @@ public class SocketTextHandler extends TextWebSocketHandler {
     					for(WebSocketSession s:sessions)
     					{
     						s.sendMessage(new TextMessage(dtf.format(LocalDateTime.now())));
+    						listenArduino = true;
     					}
     					
     					
@@ -73,10 +78,8 @@ public class SocketTextHandler extends TextWebSocketHandler {
     	try {
 			ino.arduinoRX("COM3",9600, listener);
 		} catch (ArduinoException e) {
-			// TODO Auto-generated catch block
 			Logger.getLogger(ArduinoApplication.class.getName()).log(Level.SEVERE, null,e);
 		} catch (SerialPortException e) {
-			// TODO Auto-generated catch block
 			Logger.getLogger(ArduinoApplication.class.getName()).log(Level.SEVERE, null,e);
 		}
     	
@@ -90,12 +93,5 @@ public class SocketTextHandler extends TextWebSocketHandler {
         super.afterConnectionClosed(session, status);
     }
     
-	@Override
-	public void handleTextMessage(WebSocketSession session, TextMessage message)
-			throws InterruptedException, IOException {
 
-		String payload = message.getPayload();
-		JSONObject jsonObject = new JSONObject(payload);
-		session.sendMessage(new TextMessage("Hi " + jsonObject.get("user") + " how may we help you?"));
-	}
 }
